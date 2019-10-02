@@ -1,13 +1,22 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/common/Header';
 import List from './components/list/List';
+import NotFound from './components/notfound/NotFound';
+import Detail from './components/detail/Detail';
 const App = () => {  
     return (
-      <div>
-        <Header />
+      <BrowserRouter>
+        <div>
+          <Header />
   
-        <List />
-      </div>
+          <Switch>
+            <Route path="/" component={List} exact />
+            <Route path="/currency/:id" component={Detail} exact />
+            <Route component={NotFound} />
+          </Switch>  
+        </div>
+      </BrowserRouter>
     );
 }
-export default App;  
+export default App;
